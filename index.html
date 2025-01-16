@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Home - Tugas Presentasi</title>
+    <style>
+        /* Reset default margin dan padding */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Background dan style dasar */
+        
+        body,
+        html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        /* Bagian hero (atas halaman) */
+        
+        .hero {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(download.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        /* Judul di bagian hero */
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        .hero p {
+            font-size: 1.6rem;
+            margin-bottom: 40px;
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+        /* Animasi panah ke bawah */
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-down img {
+            width: 50px;
+            height: 50px;
+            transform: rotate(0deg);
+        }
+        /* Animasi bounce untuk panah ke bawah */
+        
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        /* Animasi untuk fadeInUp */
+        
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .gambar img {
+            width: 100%;
+            height: auto;
+            /* Mengubah height agar gambar tidak melar atau terpotong */
+            margin: 0;
+            padding: 0;
+            object-fit: contain;
+            border-bottom: 2px solid #ccc;
+            /* Menambahkan garis pemisah tipis */
+        }
+        
+        .array-container {
+            margin-top: 20px;
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .array-container input[type="number"] {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .array-container button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .array-container button:hover {
+            background-color: #45a049;
+        }
+        
+        .array-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .array-container li {
+            padding: 5px;
+            background-color: #f9f9f9;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Bagian Hero -->
+    <section class="hero">
+        <h1>Selamat datang di persentasi penjelasan Array</h1>
+        <p> silahkan scroll ke bawah.</p>
+        <!-- Animasi panah ke bawah -->
+        <div class="scroll-down">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/long-arrow-down.png" alt="Scroll Down">
+        </div>
+    </section>
+
+    <!-- Konten tambahan di bawah hero -->
+    <section class="gambar">
+        <img src="slide1.png" alt="">
+        <img src="slide 2.png" alt="">
+        <img src="slide 3.png" alt="">
+        <img src="slide4.png" alt="">
+        <div class="array-container">
+            <h2>contoh array sederhana</h2>
+            <p>Masukkan angka untuk menambahkannya ke dalam array:</p>
+            <input type="number" id="inputNumber" placeholder="Masukkan angka">
+            <button id="addButton">Tambahkan ke Array</button>
+            <h3>Array Anda:</h3>
+            <ul id="arrayList">
+                <!-- List array akan ditampilkan di sini -->
+            </ul>
+            <button id="clearButton">Hapus Semua Array</button>
+        </div>
+        <img src="slide5.png" alt="">
+        <img src="slide6.png" alt="">
+        <img src="slide7.png" alt="">
+        <img src="slide8.png" alt="">
+        <img src="slide9.png" alt="">
+        <img src="slide10.png" alt="">
+        <img src="slide11.png" alt="">
+        <img src="slide12.png" alt="">
+    </section>
+    <script>
+        // Inisialisasi array kosong
+        let array = [];
+
+        // Ambil elemen-elemen HTML
+        const inputNumber = document.getElementById('inputNumber');
+        const addButton = document.getElementById('addButton');
+        const clearButton = document.getElementById('clearButton');
+        const arrayList = document.getElementById('arrayList');
+
+        // Fungsi untuk menampilkan array dalam bentuk list
+        function displayArray() {
+            // Kosongkan list yang ada
+            arrayList.innerHTML = '';
+
+            // Menampilkan elemen array
+            array.forEach((num, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `penambahan data, awal: ${index} New : ${num}`;
+                arrayList.appendChild(listItem);
+            });
+        }
+
+        // Fungsi untuk menambahkan angka ke array
+        addButton.addEventListener('click', () => {
+            const number = parseInt(inputNumber.value);
+
+            if (!isNaN(number)) {
+                // Tambahkan angka ke array
+                array.push(number);
+                inputNumber.value = ''; // Reset input
+                displayArray(); // Tampilkan array terbaru
+            } else {
+                alert('Masukkan angka yang valid!');
+            }
+        });
+
+        // Fungsi untuk menghapus semua elemen dalam array
+        clearButton.addEventListener('click', () => {
+            array = []; // Kosongkan array
+            displayArray(); // Tampilkan array kosong
+        });
+    </script>
+</body>
+
+</html>
